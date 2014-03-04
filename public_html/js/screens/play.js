@@ -11,6 +11,10 @@ game.PlayScreen = me.ScreenObject.extend({
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
+                
+                var brickList = me.game.getEntityByName("brick");
+                console.log(brickList.lenght);
+                
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
