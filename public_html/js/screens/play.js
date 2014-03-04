@@ -31,5 +31,14 @@ game.PlayScreen = me.ScreenObject.extend({
 	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
-	}
+	},
+        
+        update: function() {
+            if(brickList.length === 0 )  {
+                me.levelDirector.loadLevel("level03");
+                me.levelDirector.nextLevel("level04");
+                
+            }
+    }
+      
 });
