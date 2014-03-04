@@ -5,6 +5,10 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
+                
+                
+                
+                
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
                 me.levelDirector.loadLevel("level03");
