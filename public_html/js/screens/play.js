@@ -11,7 +11,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
-                me.levelDirector.loadLevel("level03");
+                me.levelDirector.loadLevel("level09");
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
@@ -35,8 +35,10 @@ game.PlayScreen = me.ScreenObject.extend({
         
         update: function() {
             if(brickList.length === 0 )  {
-                me.levelDirector.loadLevel("level03");
+                me.levelDirector.loadLevel("level09"); 
+                me.levelDirector.remove("level09");   
                 me.levelDirector.nextLevel("level04");
+                me.game.onLevelLoaded = this.myFunction.blind(this);
                 
             }
     }
