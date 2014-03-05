@@ -36,7 +36,7 @@ game.PlayScreen = me.ScreenObject.extend({
         update: function() {
             if(brickList.length === 0 )  {
                 me.levelDirector.loadLevel("level09"); 
-                me.levelDirector.remove("level09");   
+                me.levelDirector.removeLevel;   
                 me.levelDirector.nextLevel("level04");
                 me.game.onLevelLoaded = this.myFunction.blind(this);
                 
