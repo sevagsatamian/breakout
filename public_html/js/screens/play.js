@@ -36,8 +36,8 @@ game.PlayScreen = me.ScreenObject.extend({
         update: function() {
             if(brickList.length === 0 )  {
                 console.log(brickList.length);
-                me.levelDirector.loadLevel("level04");   
                 me.levelDirector.nextLevel();
+                me.levelDirector.loadLevel("level04");   
                 
             }
     }
