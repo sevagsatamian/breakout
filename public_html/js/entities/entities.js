@@ -4,7 +4,7 @@ game.PaddleEntity = me.ObjectEntity.extend({
     init: function(x, y, settings){
         settings.image = "paddle";
         settings.spritewidth = "48";
-        settings.spritehight = "16";
+        settings.spriteheight = "16";
         this.parent(x, y, settings);
         
         this.setVelocity(7, 0);
@@ -36,7 +36,7 @@ game.BrickEntity = me.ObjectEntity.extend({
     init: function(x, y, settings){
         settings.image = "brick";
         settings.spritewidth = "32";
-        settings.spritehight = "16";
+        settings.spriteheight = "16";
         this.parent(x, y, settings);
          
         this.type = "brick";
@@ -58,7 +58,7 @@ game.BallEntity = me.ObjectEntity.extend({
     init: function(x, y, settings){
         settings.image = "ball";
         settings.spritewidth = "16";
-        settings.spritehight = "16";
+        settings.spriteheight = "16";
         this.parent(x, y, settings);
         
         this.setVelocity(2,2);

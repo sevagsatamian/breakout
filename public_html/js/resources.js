@@ -47,5 +47,5 @@ game.resources = [
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/", channel : 2}
 	 */
-        {name: "paddle-sfx", type: "audio", src: "data/sfx/", channel: 1 }
+        {name: "paddle-sfx", type: "audio", src: "data/sfx/", channel: 2 }
 ];
