@@ -34,6 +34,8 @@ game.resources = [
               {name: "level08", type: "tmx", src: "data/map/level08.tmx"},
               {name: "level09", type: "tmx", src: "data/map/level09.tmx"},
               {name: "level010", type: "tmx", src: "data/map/level010.tmx"},
+               {name: "level011", type: "tmx", src: "data/map/level011.tmx"},
+                {name: "level012", type: "tmx", src: "data/map/level012.tmx"},
         // *** App Academy ***
         // Add the level as a resource to use within the program
 
