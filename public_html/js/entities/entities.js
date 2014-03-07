@@ -80,6 +80,7 @@ game.BallEntity = me.ObjectEntity.extend({
             }
             else if(collision.type === "brick"){
                 this.vel.y *= -1;
+                game.data.score += 100;
             }
         }
         
