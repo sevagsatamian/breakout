@@ -12,7 +12,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
-                me.levelDirector.loadLevel("level010");
+                me.levelDirector.loadLevel("level012");
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
