@@ -55,11 +55,11 @@ game.data.bricks = 0;
 	 me.state.change(me.state.LOADING);
          	{
 	if (action === "right") {
-             _this.nextLevel();
-}       else if (action === 'left') {
-             _this.previousLevel();
-       }
-    };
+_this.nextLevel();
+} else if (action === 'left') {
+_this.previousLevel();
+}
+};
 
 // load next level
 this.nextLevel();
