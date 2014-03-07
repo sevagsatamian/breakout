@@ -321,7 +321,6 @@ var res = me.game.collideType(this, 'paddle');
 // just check if res is defined since we have only 1 paddle
 if (res) {
 this.collidable = false;
-me.audio.play('powerup');
 res.obj.onPowerUp();
 me.game.world.removeChild(this);
 }
