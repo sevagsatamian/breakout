@@ -189,51 +189,7 @@ game.BallEntity = me.ObjectEntity.extend({
        this.previousVelocity = this.vel.clone();
        
        return true;
-    
-   if (this.pos.y > this.viewportHeight) {
-// force immediate object destruction (true parameter)
-me.game.world.removeChildNow(this);
-me.state.current().onBallDeath();
-return true;
-}
-
-// check for collision with paddle & bricks
-var res = me.game.collide(this);
-if (res) {
-if (res.obj.isPaddle) {
-if (res.y !== 0) {
-this.vel.x = this._determineBounceVelocity(res.obj);
-this.vel.y *= - 1;
-} else if (res.x !== 0) {
-this.vel.x *= - 1;
-}
-} else if (res.obj.type === 'brick') {
-
-var dx = res.obj.pos.x - this.pos.x;
-if (this.hWidth < res.obj.hWidth) {
-dx -= this.width;
-} else {
-dx += res.obj.width;
-}
-
-var dy = res.obj.pos.y - this.pos.y;
-if (this.hHeight < res.obj.hHeight) {
-dy -= this.height;
-} else {
-dy += res.obj.height;
-}
-
-if (Math.abs(dx) < Math.abs(dy)) {
-this.pos.x = this.prev.x;
-this.vel.x *= -1;
-} else {
-this.pos.y = this.prev.y;
-this.vel.y *= -1;
-}
-}
-}
-return true;
-},
+    }, 
     	_determineBounceVelocity: function(paddle) {
 // check for distance to the paddle
 
