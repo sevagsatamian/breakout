@@ -6,7 +6,8 @@ var game = {
 	data : {
 		// score
 		score : 0,
-                brickcounter : 0        
+                bricks : 0,
+                lives:3
 	},
 	
 	
