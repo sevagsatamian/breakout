@@ -5,14 +5,13 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-                game.data.lives = 3;
-                game.data.level = -1;
+                
                 
                 
                 
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
-                me.levelDirector.loadLevel("level010");
+                me.levelDirector.loadLevel("level012");
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
@@ -24,6 +23,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
 	},
+
+
 	/**
 	 *  action to perform when leaving this screen (state change)
 	 */
@@ -32,51 +33,13 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.game.world.removeChild(this.HUD);
 	},
         
-       /* update: function() {
+        update: function() {
             if(brickList.length === 0 )  {
                 console.log(brickList.length);
                 me.levelDirector.nextLevel();
                 me.levelDirector.loadLevel("level04");   
                 
-            } 
-    } 
-        */
-// called by EntityBrick
-addScore: function (type) {
-game.data.score += 100;
-},
-
-// called by EntityBrick
-countBrick: function (type) {
-game.data.bricks -=1;
-if (game.data.bricks === 0) {
-// all balls should be deactivated
-game.ball.active = false;
-this.nextLevel();
-}
-},
-        
-        	// call by EntityBall
-onBallDeath: function () {
-if (me.game.world.getChildByName('ball').length === 0) {
-if (game.data.lives -1 <= 0) {
-me.state.change(me.state.GAMEOVER);
-} else {
-game.data.lives--;
-this._reset();
-}
-}
-},
-    	nextLevel: function() {
-game.data.level++;
-// -1 is to remove the title screen
-if (game.data.level === me.levelDirector.levelCount()-1) {
-me.state.change(me.state.GAME_END);
-return;
-}
-me.levelDirector.loadLevel("level"+game.data.level);
-
-this._reset();
-}
+            }
+    }
       
 });

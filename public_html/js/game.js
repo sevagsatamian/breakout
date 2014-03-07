@@ -3,21 +3,10 @@
 var game = {
 
 	// an object where to store game information
-		onResetEvent: function() {	
-// reset the game data
-game.data.lives = 3;
-game.data.score = 0;
-game.data.level = -1;
-// # bricks in the level
-game.data.bricks = 0;
-                },
-    data : {
+	data : {
 		// score
 		score : 0,
-                brickcounter : 0   
-               
-   
-                // # bricks in the level
+                brickcounter : 0        
 	},
 	
 	
@@ -53,55 +42,6 @@ game.data.bricks = 0;
 
 	// Initialize melonJS and display a loading screen.
 	 me.state.change(me.state.LOADING);
-         	{
-	if (action === "right") {
-_this.nextLevel();
-} else if (action === 'left') {
-_this.previousLevel();
-}
-};
-
-// load next level
-this.nextLevel();
-},
-
-// called by EntityBrick
-addScore: function (type) {
-game.data.score += 100;
-},
-
-// called by EntityBrick
-countBrick: function (type) {
-game.data.bricks -=1;
-if (game.data.bricks === 0) {
-// all balls should be deactivated
-game.ball.active = false;
-this.nextLevel();
-}
-},
-
-// call by EntityBall
-onBallDeath: function () {
-if (me.game.world.getChildByName('ball').length === 0) {
-if (game.data.lives -1 <= 0) {
-me.state.change(me.state.GAMEOVER);
-} else {
-game.data.lives--;
-this._reset();
-}
-}
-},
-
-nextLevel: function() {
-game.data.level++;
-// -1 is to remove the title screen
-if (game.data.level === me.levelDirector.levelCount()-1) {
-me.state.change(me.state.GAME_END);
-return;
-}
-me.levelDirector.loadLevel("level"+game.data.level);
-
-this._reset();
 },
 
 	// Run on game resources loaded.
