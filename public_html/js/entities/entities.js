@@ -47,8 +47,15 @@ game.BrickEntity = me.ObjectEntity.extend({
 
     },
 
-    onCollision: function(){
+    onCollision: function(res, obj){
+    if (!this.dying)
+        this.dying = true;
        me.game.remove(this);   
+       // add score and decrease brick count
+
+       me.state.current().addScore(this.type);
+
+       me.state.current().countBrick();
 
     }
    
@@ -110,7 +117,32 @@ game.BallEntity = me.ObjectEntity.extend({
        this.previousVelocity = this.vel.clone();
        
        return true;
-    } 
+    }, 
     
+    _determineBounceVelocity: function(paddle) {
+
+		// check for distance to the paddle
+
+		//var distance = this.distanceToPoint({x:paddle.pos.x+paddle.collisionBox.hWidth,y:paddle.pos.y});
+
+		var distance = this.distanceTo(paddle) - this.hHeight - paddle.hHeight;
+
+		
+
+		var ratio = distance / paddle.collisionBox.hWidth * 2.5;
+
+		
+
+		if((this.pos.x + this.hWidth) < (paddle.pos.x + paddle.collisionBox.hWidth)) {
+
+			// send the ball to the left if hit on the left side of the paddle, and vice versa
+
+			ratio = -ratio;
+
+		}
+
+		return (this.speed * ratio);
+
+	}
     });
     
