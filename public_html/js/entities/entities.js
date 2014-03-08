@@ -103,7 +103,7 @@ game.BallEntity = me.ObjectEntity.extend({
 		}
         
         
-        collision = this.updateMovement();
+      /*  collision = this.updateMovement();
        
        if(collision){
            if(this.vel.x === 0){
@@ -117,6 +117,7 @@ game.BallEntity = me.ObjectEntity.extend({
        this.previousVelocity = this.vel.clone();
        
        return true;
+       */
     }, 
     
     _determineBounceVelocity: function(paddle) {

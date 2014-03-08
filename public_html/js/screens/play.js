@@ -11,7 +11,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
-                me.levelDirector.loadLevel("level012");
+                me.levelDirector.loadLevel("level04");
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
@@ -32,27 +32,14 @@ game.PlayScreen = me.ScreenObject.extend({
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
 	},
-                	countBrick: function () {
-                         if(brickList.length === 0 )  {
-                me.levelDirector.nextLevel();
-                me.levelDirector.loadLevel("level04");   
-                game.ball.active = false;
-                this.nextLevel();
-            }
-            brickList = me.game.getEntityByName("brick");
-            console.log(brickList.length);
-    }
-                  
-//game.data.bricks -=1;
-      /*  update: function() {
+        update: function() {
             if(brickList.length === 0 )  {
                 me.levelDirector.nextLevel();
                 me.levelDirector.loadLevel("level04");   
-                game.ball.active = false;
-                this.nextLevel();
+                
             }
             brickList = me.game.getEntityByName("brick");
             console.log(brickList.length);
     }
-      */
+      
 });
