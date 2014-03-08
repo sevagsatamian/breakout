@@ -83,6 +83,17 @@ game.BallEntity = me.ObjectEntity.extend({
                 game.data.score += 100;
             }
         }
+        // check if we miss the paddle and went out
+
+		if (this.pos.y > this.viewportHeight) {
+
+			// force immediate object destruction (true parameter)
+
+			me.game.remove(this, true);
+
+			me.state.current().onBallDeath();
+
+		}
         
         
         collision = this.updateMovement();
