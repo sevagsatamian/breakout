@@ -28,7 +28,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	/**
 	 *  action to perform when leaving this screen (state change)
 	 */
-	onDestroyEvent: function() {
+/*	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
 	},
@@ -42,7 +42,7 @@ game.PlayScreen = me.ScreenObject.extend({
             brickList = me.game.getEntityByName("brick");
             console.log(brickList.length);
     },
-                  
+                  */
 //game.data.bricks -=1;
       /*  update: function() {
             if(brickList.length === 0 )  {
@@ -55,7 +55,24 @@ game.PlayScreen = me.ScreenObject.extend({
             console.log(brickList.length);
     }
       */
-     	// called by EntityBrick
+    	// called by EntityBrick 
+
+	countBrick: function (type) {
+
+		this.bricks -=1;
+
+		//if (this.bricks === 0) {
+                 if(brickList.length === 0 )  {
+			// all balls should be deactivated
+
+			game.ball.active = false;
+
+			this.nextLevel();
+
+		}
+            brickList = me.game.getEntityByName("brick");
+            console.log(brickList.length);
+	},
 // call by EntityBall
 onBallDeath: function () {
 if (me.game.world.getChildByName('ball').length === 0) {

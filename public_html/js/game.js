@@ -38,6 +38,10 @@ var game = {
          
          //disable the gravity
          me.sys.gravity = 0;
+                  // set the loader callback
+
+         me.loader.onload = this.loaded.bind(this);
+
 	// Load the resources.
 	 me.loader.preload(game.resources);
 
