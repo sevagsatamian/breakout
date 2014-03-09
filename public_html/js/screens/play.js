@@ -11,7 +11,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
-                me.levelDirector.loadLevel("level012");
+                me.levelDirector.loadLevel("level01");
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
@@ -32,7 +32,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
 	},
-                	countBrick: function () {
+                	countBrick: function (type) {
                          if(brickList.length === 0 )  {
                 me.levelDirector.nextLevel();
                 me.levelDirector.loadLevel("level04");   
@@ -41,7 +41,7 @@ game.PlayScreen = me.ScreenObject.extend({
             }
             brickList = me.game.getEntityByName("brick");
             console.log(brickList.length);
-    }
+    },
                   
 //game.data.bricks -=1;
       /*  update: function() {
@@ -55,4 +55,28 @@ game.PlayScreen = me.ScreenObject.extend({
             console.log(brickList.length);
     }
       */
+     	// called by EntityBrick
+// call by EntityBall
+onBallDeath: function () {
+if (me.game.world.getChildByName('ball').length === 0) {
+if (game.data.lives -1 <= 0) {
+me.state.change(me.state.GAMEOVER);
+} else {
+game.data.lives--;
+this._reset();
+}
+}
+},
+
+nextLevel: function() {
+game.data.level++;
+// -1 is to remove the title screen
+if (game.data.level === me.levelDirector.levelCount()-1) {
+me.state.change(me.state.GAME_END);
+return;
+}
+me.levelDirector.loadLevel("level"+game.data.level);
+
+this._reset();
+}
 });
