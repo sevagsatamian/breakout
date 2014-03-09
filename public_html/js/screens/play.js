@@ -11,7 +11,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
-                me.levelDirector.loadLevel("level01");
+                me.levelDirector.loadLevel("level012");
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
@@ -56,6 +56,7 @@ game.PlayScreen = me.ScreenObject.extend({
     }
       */
      	// called by EntityBrick
+
 // call by EntityBall
 onBallDeath: function () {
 if (me.game.world.getChildByName('ball').length === 0) {
@@ -78,5 +79,5 @@ return;
 me.levelDirector.loadLevel("level"+game.data.level);
 
 this._reset();
-}
+},
 });
