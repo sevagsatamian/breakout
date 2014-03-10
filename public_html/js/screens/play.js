@@ -10,7 +10,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-                
+            
                 
                 
                 
@@ -54,7 +54,13 @@ game.PlayScreen = me.ScreenObject.extend({
             
             if(brickList.length === 0 )  {
                 me.levelDirector.nextLevel();
+                me.levelDirector.loadLevel("level02");   
+                 me.levelDirector.nextLevel();
+                me.levelDirector.loadLevel("level03");   
+                 me.levelDirector.nextLevel();
                 me.levelDirector.loadLevel("level04");   
+                 me.levelDirector.nextLevel();
+                me.levelDirector.loadLevel("level05");   
                 game.ball.active = false;
                 this.nextLevel();
             }
@@ -85,6 +91,7 @@ game.PlayScreen = me.ScreenObject.extend({
            me.state.change(me.state.GAMEOVER);
                       } else {
            game.data.lives--;
+           me.levelDirector.reloadLevel();
            this._reset();
      }
   }
