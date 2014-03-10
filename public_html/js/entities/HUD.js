@@ -61,6 +61,13 @@ game.HUD.ScoreItem = me.Renderable.extend({
 		if (this.score !== game.data.score) {	
 			this.score = game.data.score;
 			return true;
+                
+                if(brickList.length === 0 )  {
+			this.nextLevel();
+ 
+		}
+                      brickList = me.game.getEntityByName("brick");
+                      console.log(brickList.length);
 		}
 		return false;
 	},

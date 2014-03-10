@@ -2,6 +2,11 @@ game.PlayScreen = me.ScreenObject.extend({
 	/**
 	 *  action to perform on state change
 	 */
+        
+        init: function() {
+            this.parent(true);
+        },
+        
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
@@ -17,7 +22,6 @@ game.PlayScreen = me.ScreenObject.extend({
                 me.game.add(ball, 4);
               
                 var brickList = me.game.getEntityByName("brick");
-                console.log(brickList.length);
                 
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
@@ -44,20 +48,21 @@ game.PlayScreen = me.ScreenObject.extend({
     },
                   */
 //game.data.bricks -=1;
-      /*  update: function() {
+        update: function() {
+            brickList = me.game.getEntityByName("brick");
+            console.log(brickList.length);
+            
             if(brickList.length === 0 )  {
                 me.levelDirector.nextLevel();
                 me.levelDirector.loadLevel("level04");   
                 game.ball.active = false;
                 this.nextLevel();
             }
-            brickList = me.game.getEntityByName("brick");
-            console.log(brickList.length);
-    }
-      */
+    },
+      
     	// called by EntityBrick 
 
-	countBrick: function (type) {
+	countBrick: function () {
 
 		this.bricks -=1;
 
@@ -74,26 +79,26 @@ game.PlayScreen = me.ScreenObject.extend({
             console.log(brickList.length);
 	},
 // call by EntityBall
-onBallDeath: function () {
-if (me.game.world.getChildByName('ball').length === 0) {
-if (game.data.lives -1 <= 0) {
-me.state.change(me.state.GAMEOVER);
-} else {
-game.data.lives--;
-this._reset();
-}
-}
+    onBallDeath: function () {
+               if (me.game.world.getChildByName('ball').length === 0) {
+               if (game.data.lives -1 <= 0) {
+           me.state.change(me.state.GAMEOVER);
+                      } else {
+           game.data.lives--;
+           this._reset();
+     }
+  }
 },
 
-nextLevel: function() {
-game.data.level++;
-// -1 is to remove the title screen
-if (game.data.level === me.levelDirector.levelCount()-1) {
-me.state.change(me.state.GAME_END);
-return;
-}
-me.levelDirector.loadLevel("level"+game.data.level);
+   nextLevel: function() {
+         game.data.level++;
+   // -1 is to remove the title screen
+               if (game.data.level === me.levelDirector.levelCount()-1) {
+         me.state.change(me.state.GAME_END);
+     return;
+    }
+        me.levelDirector.loadLevel("level"+game.data.level);
 
-this._reset();
-}
+     this._reset();
+  }
 });
