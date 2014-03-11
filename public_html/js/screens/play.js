@@ -10,7 +10,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-            
+                game.data.lives = 3;
                 
                 
                 
@@ -29,24 +29,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	},
 
 
-	/**
-	 *  action to perform when leaving this screen (state change)
-	 */
-/*	onDestroyEvent: function() {
-		// remove the HUD from the game world
-		me.game.world.removeChild(this.HUD);
-	},
-                	countBrick: function (type) {
-                         if(brickList.length === 0 )  {
-                me.levelDirector.nextLevel();
-                me.levelDirector.loadLevel("level04");   
-                game.ball.active = false;
-                this.nextLevel();
-            }
-            brickList = me.game.getEntityByName("brick");
-            console.log(brickList.length);
-    },
-                  */
+                
 //game.data.bricks -=1;
         update: function() {
             brickList = me.game.getEntityByName("brick");
