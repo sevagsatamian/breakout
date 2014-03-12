@@ -92,5 +92,6 @@ game.PlayScreen = me.ScreenObject.extend({
             me.levelDirector.loadLevel("level"+game.data.level);
             var ball = new game.BallEntity(200,200, {});
             me.game.add(ball, 4);
+            this.resetBall();
   }
 });
