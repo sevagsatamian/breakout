@@ -5,8 +5,14 @@ game.PlayScreen = me.ScreenObject.extend({
         
         init: function() {
             this.parent(true);
+             // setup a callback
+      me.loader.onProgress = this.onProgressUpdate.bind(this);
         },
-        
+   // will be fired by the loader each time a resource is loaded
+   onProgressUpdate: function(progress)
+   {
+      this.invalidate = true;
+   },
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
@@ -16,7 +22,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 
                 // *** App Academy ***
                 // Load the level you created in the program Tiled
-                me.levelDirector.loadLevel("level01");
+                me.levelDirector.loadLevel("level010");
                
                 var ball = new game.BallEntity(200,200, {});
                 me.game.add(ball, 4);
@@ -36,18 +42,15 @@ game.PlayScreen = me.ScreenObject.extend({
             console.log(brickList.length);
             
             if(brickList.length === 0 )  {
-                me.levelDirector.nextLevel();
-                me.levelDirector.loadLevel("level02");   
-                 me.levelDirector.nextLevel();
-                me.levelDirector.loadLevel("level03");   
-                 me.levelDirector.nextLevel();
-                me.levelDirector.loadLevel("level04");   
-                 me.levelDirector.nextLevel();
                 me.levelDirector.loadLevel("level05");   
-                game.ball.active = false;
                 this.nextLevel();
+                this.resetBall();
             }
     },
+            resetBall: function(){
+            var ball = new game.BallEntity(200,200, {});
+                me.game.add(ball, 4);
+                },
       
     	// called by EntityBrick 
 
@@ -62,12 +65,12 @@ game.PlayScreen = me.ScreenObject.extend({
 			game.ball.active = false;
 
 			this.nextLevel();
-
+                        var ball = new game.BallEntity(200,200, {});
 		}
             brickList = me.game.getEntityByName("brick");
             console.log(brickList.length);
 	},
-// call by EntityBall
+/* call by EntityBall
     onBallDeath: function () {
                if (me.game.world.getChildByName('ball').length === 0) {
                if (game.data.lives -1 <= 0) {
@@ -78,17 +81,16 @@ game.PlayScreen = me.ScreenObject.extend({
            this._reset();
      }
   }
-},
+},*/
 
    nextLevel: function() {
          game.data.level++;
    // -1 is to remove the title screen
-               if (game.data.level === me.levelDirector.levelCount()-1) {
-         me.state.change(me.state.GAME_END);
-     return;
-    }
-        me.levelDirector.loadLevel("level"+game.data.level);
-
-     this._reset();
+         if (game.data.level === me.levelDirector.levelCount()-1) {
+            me.state.change(me.state.PLAY);
+         }
+            me.levelDirector.loadLevel("level"+game.data.level);
+            var ball = new game.BallEntity(200,200, {});
+            me.game.add(ball, 4);
   }
 });
