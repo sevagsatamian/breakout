@@ -5,6 +5,8 @@ game.PlayScreen = me.ScreenObject.extend({
         
         init: function() {
             this.parent(true);
+            this.onResetEvent(true);
+            this.resetBall(true);
              // setup a callback
       me.loader.onProgress = this.onProgressUpdate.bind(this);
         },
@@ -66,6 +68,8 @@ game.PlayScreen = me.ScreenObject.extend({
 
 			this.nextLevel();
                         var ball = new game.BallEntity(200,200, {});
+                            me.game.add(ball, 4);
+                             this.resetBall();
 		}
             brickList = me.game.getEntityByName("brick");
             console.log(brickList.length);
